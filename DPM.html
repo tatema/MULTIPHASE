@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DPM.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<table><tr><td bgcolor=WHITE>
+<h1 id="%E7%A6%BB%E6%95%A3%E7%9B%B8%E6%A8%A1%E5%9E%8B%E5%BA%94%E7%94%A8">离散相模型应用</h1>
+<h2 id="%E6%B5%81%E5%8C%96%E5%BA%8A%E5%88%86%E7%B1%BB">流化床分类</h2>
+<p>   流速达到某一限值时，床层刚刚能被流体;托动时，床内颗粒就开始流化起来，这时的流体空床线速度称为临界流化速度μ。
+<strong>散式流化床：</strong> 对于液固系统，液体与颗粒的密度相差不大，故μmf一般很小，流速进一步提高时，床层膨胀均匀且波动小，颗粒在床内的分布比较均匀，故称做散式流化床。
+<strong>聚式流化床：</strong> 对气固系统而言，一般在气速超过临界流化速度后，将会出现气泡。气速越高，气泡造成的扰动越剧烈，使床层波动频繁，这种形态的流化床称作聚式流化床或气泡床。
+聚式流化床有分为：
+<strong>鼓泡床：</strong> 在流化床中床面以下的部分称密相床，床面以上的部分称稀相床，密相床中形如水沸，故称作鼓泡床。
+<strong>湍流床：</strong> 随着气速的加大，流化床中的湍动程度也跟着加剧，故有人称那时的情况叫湍动床。
+<strong>快速床：</strong> 当气速一旦超过了颗粒的带出速度，则粒子就会被气流所带走成为快速床。</p>
+<p>    <strong>聚式流化床中存在有明显的两相：</strong> 主要是气体的气泡相（也称稀相）；由颗粒和颗粒间气体所组成的乳相（也称颗粒相或密相），其中鼓泡流化床和湍动流化床都属于聚式流态化。而散式流化床是指颗粒都较均匀地分布在床层中的流化床，一般多见于液固流化床，在高密度气体流化床中也会出现。</p>
+<p>   在连续相中离散相颗粒间的相互作用成为影响流动的主要因素时，这种流动为颗粒流（granular flows），例如泥浆管道、山体滑坡、流化床等等。CFD模拟颗粒流动时，有双欧拉模型（Eulerian–Eulerian）和欧拉-拉格朗日模型（Eulerian–Lagrangian）两种方法，其中双欧拉模型忽略了分散相的离散性，一般只能来获得颗粒流动的宏观特性，而欧拉-拉格朗日模型考虑了离散相中每个颗粒（或颗粒微团）的运动，更加适合研究颗粒流动的微观机理。</p>
+<h2 id="%E9%A2%97%E7%B2%92%E7%9A%84%E8%80%A6%E5%90%88%E6%96%B9%E5%BC%8F">颗粒的耦合方式</h2>
+<p>   DPM模型是处理密相气固流动，我认为处理颗粒粒径的下限到50um左右，因为再小的颗粒需要考虑更多的力了，比如静电力等；没有上限的，可以非常大，因为颗粒处理用软球模型，但是注意网格尺寸要随时保证大概是颗粒粒径的3-5倍。rebound边界跟Fluent等软件设置一样，亦即颗粒和壁面有粘附、反弹以及穿透三种作用。
+稀相，扩散时候一般不考虑颗粒之间的碰撞。DPMFoam是考虑空隙率的密相求解器，你虽然关掉了曳力以及软球，硬球模型，但是空隙率这一项还是会出现在连续性和动量方程里面的。体积分数没有下限，我说的粒径50微米是考虑到这个求解器是用来求解流化床等密相问题的。如果把它改成稀相的求解器，也就是只有颗粒和流体之间有相互作用力，那么颗粒粒径再小很多也没关系的。
+DPM模型和CFDEM里面的DEM模型是一种完全的DEM，我们称为“四向耦合”，考虑了颗粒-流体，颗粒-颗粒，颗粒-壁面之间的相互作用力，颗粒-颗粒碰撞采用软球模型或者硬球模型(现在一般是软球模型)来进行模拟。所以对于一个实验室尺度（&lt;1m）的流化床来说，我们可以采用DDPM, MP-PIC或者OpenFOAM中的DPMFoam或者CFDEM来模拟。而Fluent中的DPM模型是不能用来模拟这样的密相问题的。Fluent的DPM模型是“双向耦合”，不考虑孔隙率和颗粒碰撞。
+<strong>单向耦合或不耦合方法:</strong> 流体→颗粒-这只适用于颗粒浓度非常低(&lt; 0.01%体积分数)的情况，对湍流没有显著影响。流场的计算是在没有颗粒固定连续相流场(即颗粒注入流场之前)的情况下进行的，并在颗粒注入流场时进行跟踪。这些粒子在其贯穿流域的轨迹中不与任何其他粒子相互作用。</p>
+<p><strong>双向耦合:</strong> 流体↔particle -当粒子体积分数在0.01% ~ 10%范围内时，这种耦合变得重要，并影响TKE的耗散和产生。流体的流动必然是随着拉格朗日粒子的运动而求解的。在ANSYS FLUENT中，这是通过在离散相模型对话框中打开“与连续相交互”选项来实现的。为了控制粒子被跟踪和DPM源被更新的频率，“每个DPM迭代的连续阶段迭代数”选项存在。选项“每次流迭代更新DPM源”可用于非稳定模拟。</p>
+<p><strong>四向耦合:</strong> 流体↔粒子+粒子碰撞:当粒子体积分数为&gt; 10%时，粒子-粒子相互作用变得重要。需要注意的是，由于固体和气/液的密度差异很大，质量分数还可以更高</p>
+<h2 id="lagrangian%E5%BA%93%E4%BB%A3%E7%A0%81%E8%B0%83%E7%94%A8uml">Lagrangian库代码调用UML</h2>
+
+</body>
+</html>

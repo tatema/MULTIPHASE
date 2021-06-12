@@ -1,0 +1,44 @@
+@startmindmap
++[#Orange]  流体
+++[#lightgreen] 基本
+
+++[#lightgreen] 多相流
+++[#lightgreen] 湍流
+++[#lightgreen] 离散相
+
+'+++[#lightblue] coalChemistr
++++[#lightblue] 煤化学反应
+++++[#FFBBCC] 煤颗粒云属性
+'+++[#lightblue] DPM  密相离散相求解器
++++[#lightblue] 密相离散相求解器
+
+'++++[#FFBBCC] particleProperties 
+++++[#FFBBCC] 颗粒属性
+
+'+++[#lightblue] MPPIC
+'+++[#lightblue] reactingParcel
++++[#lightblue] 多相质点网格法
+++++[#FFBBCC] 颗粒属性
+
++++[#lightblue] 反应微团
+++++[#FFBBCC]  反应微团属性
++++[#lightblue] 喷雾
+++++[#FFBBCC]  喷雾云属性
+'++++[#FFBBCC]  Spray
+
+'++++[#FFBBCC] 颗粒属性
+/'right side 
+  *****  AA
+  *****  AB*/
+@endmindmap
+
+header
+My super header
+endheader
+
+center footer My super footer
+
+legend right
+  Short
+  legend
+endlegend

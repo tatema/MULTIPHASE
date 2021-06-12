@@ -1,0 +1,82 @@
+@startmindmap
++[#Orange]  属性
+
+
+
++-[#FFBBCC] 煤颗粒云属性
++-[#FFBBCC] 颗粒属性
++-[#FFBBCC]  反应微团属性
++-[#FFBBCC]  喷雾云属性
+
+
+++[#lightgreen] 求解设置
++++[#lightblue]  颗粒开关
++++[#lightblue]  耦合开关
++++[#lightblue]  瞬态开关
++++[#lightblue]  动量传递修正开关
+
+++[#lightgreen] 常量属性
++++[#lightblue]  颗粒密度
++++[#lightblue]  颗粒质量
++++[#lightblue]  杨氏模量
++++[#lightblue]  波松比
+
+
+++[#lightgreen] 子模型
++++[#lightblue]  颗粒受力
++++[#lightblue]  颗粒入射模型
+++++ 人工注入
+++++ 区域注入
+
+
++++[#lightblue]  颗粒与壁面相互作用模型
+'++++ 反弹
+'++++ 粘黏
+'++++ 逃逸
+'++++ standardWallInteraction
+++++ 标准壁面相互作用
+++++ 边界面相互作用
+'++++ localInteraction
+
++++[#lightblue]  碰撞模型
+++++ 对碰撞
+
++++[#lightblue]  辐射模型
+'++++ 开
+'++++ 关
+
++++[#lightblue]  可压缩模型
+'++++ 关
+'++++ singleMixtureFraction
+'++++ singlePhaseMixture
+++++ 单一混合组分
+++++ 单相混合
+
++++[#lightblue]  分解模型
+'++++ 关
+++++ Reitz-Diwakar
+++++ Reitz-KHRT
+
++++[#lightblue]  雾化模型
+'++++ thermoSurfaceFilm
+++++ BlobsSheet雾化
+++++ LISA雾化
+
++++[#lightblue]  表面膜模型
+'++++ thermoSurfaceFilm
+++++ 热表面膜
+
++++[#lightblue]  相变模型
+'++++ liquidEvaporation
+'++++ liquidEvaporationBoil
+++++ 液体蒸发
+++++ 液体蒸发沸腾
+
++++[#lightblue]  热传导模型
+++++ Ranz-Marshall
+
++++[#lightblue]  色散模型
+'++++ stochasticDispersionRAS
+++++ RAS随机色散
+
+@endmindma
